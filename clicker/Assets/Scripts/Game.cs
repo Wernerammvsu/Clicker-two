@@ -7,6 +7,12 @@ public class Game : MonoBehaviour
 {
     public Text scoreText;
     private int score=0;
+    public GameObject shopPanel;
+
+    public void shopPanelAction()
+    {
+        shopPanel.SetActive(!shopPanel.activeSelf);
+    }
     public void ClickHere() {
         score += 1;
         scoreText.text = "Score:  " + score;
