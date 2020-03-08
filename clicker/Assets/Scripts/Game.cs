@@ -12,6 +12,7 @@ public class Game : MonoBehaviour
     public GameObject shopPanel;
     public int[] shopCosts;
     public int[] shopBonus;
+    public Text[] shopButtonText;
     public void shopPanelAction()
     {
         shopPanel.SetActive(!shopPanel.activeSelf);
@@ -21,7 +22,10 @@ public class Game : MonoBehaviour
         if (score >= shopCosts[0])
         { 
         bonus += shopBonus[index];
-            score -= shopBonus[index];
+        score -= shopCosts[index];
+            shopBonus[index] *= 2;
+            shopCosts[index] *= 2;
+            shopButtonText[index].text = "buy fairy's pollen \n" + shopCosts[index];
         }
         else
         {
