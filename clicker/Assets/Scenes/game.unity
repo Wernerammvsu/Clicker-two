@@ -519,10 +519,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 493852060}
   shopPanel: {fileID: 1758401574}
-  shopCosts: 1400000064000000
+  shopCosts: 1400000064000000dc050000
   shopBonus: 05000000
   shopButtonText:
   - {fileID: 1016228873}
+  shopButtons:
+  - {fileID: 1265664976}
+  bonusTime:
+  - 20
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1486,12 +1490,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 519420030}
-        m_MethodName: shopButton_fairy
+        m_MethodName: startBonusTimer
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

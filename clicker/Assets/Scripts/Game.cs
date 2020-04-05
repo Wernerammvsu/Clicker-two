@@ -14,8 +14,10 @@ public class Game : MonoBehaviour
     public int[] shopCosts;
     public int[] shopBonus;
     public Text[] shopButtonText;
+    public Button[] shopButtons;
     int num = 0;
-    private int countPowerUp;  //колличество купленных улучшений
+    private int countPowerUp, nectarBonus = 1;  //колличество купленных улучшений
+    public float[] bonusTime;
     public void shopPanelAction() //Скрывает панель магазина
     {
         shopPanel.SetActive(!shopPanel.activeSelf);
@@ -46,9 +48,20 @@ public class Game : MonoBehaviour
     {
         while(true)
         {
-            score += countPowerUp;
+            score += (countPowerUp * nectarBonus);
             yield return new WaitForSeconds(1);
         }
+    }
+    IEnumerator nectarTime(float time, int index)
+    {
+        shopButtons[index].interactable = false;
+        if (index == 0)
+        {
+            nectarBonus *= 10;
+            yield return new WaitForSeconds(time);
+            nectarBonus /= 10;
+        }
+        shopButtons[index].interactable = true;
     }
     public void BuyPowerUp(int index)
     {
@@ -61,6 +74,10 @@ public class Game : MonoBehaviour
         {
             Debug.Log("Insufficient funds");
         }
+    }
+    public void startBonusTimer(int index) //старт бонуса от нектара
+    {
+        StartCoroutine(nectarTime(bonusTime[index], index));
     }
     // Start is called before the first frame update
     void Start()
